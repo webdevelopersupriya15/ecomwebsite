@@ -11,7 +11,6 @@ import { useNavigate } from 'react-router-dom';
 
 
 export default function page() {
-  const nav=useNavigate()
   let {token,setToken}=useContext(LoginContext)
   let { id } =useParams()
   let [imgsrc1, setImgSrc1] = useState('');
@@ -102,7 +101,7 @@ export default function page() {
     .then((res)=>res.data)
     .then((finalRes)=>{
         console.log(finalRes)
-        nav('/viewproduct')
+        // nav('/viewproduct')
     }) 
   }
   useEffect(() => {
@@ -150,7 +149,7 @@ export default function page() {
               <input
                 className="w-[70%] mb-2 block p-1 text-sm text-gray-900 border border-gray-300 cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                 type="file"
-                name="productImage1"
+                name="productImage"
                 
                 onChange={event => imageShow(event, setImgSrc1)}
               />
@@ -172,7 +171,7 @@ export default function page() {
               <input
                 className="w-[70%] mb-2 block p-1 text-sm text-gray-900 border border-gray-300 cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                 type="file"
-                name="productImage2"
+                name="productImage"
                
                 onChange={event => imageShow(event, setImgSrc2)}
               />

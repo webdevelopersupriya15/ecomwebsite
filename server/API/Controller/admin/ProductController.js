@@ -20,7 +20,7 @@ exports.insert= async(req,res)=>{
     }else{
         let product
         let id=req.params.id;
-        if(req.files===undefined){
+        if(req.files.length === 0){
             product= await productModel.updateOne({_id:id},{
                 categoryId:req.body.catId,
                 productName:req.body.pName,
