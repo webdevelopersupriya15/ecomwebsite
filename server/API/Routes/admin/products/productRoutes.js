@@ -17,7 +17,10 @@ const storage = multer.diskStorage({
   })
   
 
-  const upload = multer({storage: storage}).array('productImage', 2);
+  const upload = multer({storage: storage}).fields([
+    {name:'img1', maxCount:1},
+    {name:'img2', maxCount:1}
+  ]);
 
   productRoutes.post('/insert/:id?',upload,insert)
   productRoutes.get('/view',view)
