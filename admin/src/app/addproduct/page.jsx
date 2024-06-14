@@ -4,10 +4,13 @@ import Sidebar from '../common/Sidebar'
 import Header from '../common/Header'
 import axios from 'axios';
 import { apiBaseUrl } from '../API/BaseUrl';
+import { useRouter } from 'next/navigation';
 
 export default function page() {
   let [imgsrc1, setImgSrc1] = useState('');
   let [imgsrc2, setImgSrc2] = useState('');
+  const router = useRouter();
+
   let [dispcategory, setDispCategory] = useState([])
   let imageShow = (event, setImageSrc) => {
     let imgFile = event.target;
@@ -33,6 +36,7 @@ export default function page() {
     .then((res)=>res.data)
     .then((finalRes)=>{
         console.log(finalRes)
+        router.push('/viewproduct');
     }) 
   }
   useEffect(() => {
@@ -75,7 +79,7 @@ export default function page() {
               <input
                 className="w-[70%] mb-2 block p-1 text-sm text-gray-900 border border-gray-300 cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                 type="file"
-                name="productImage"
+                name="img1"
                 onChange={event => imageShow(event, setImgSrc1)}
               />
             </div>
@@ -96,7 +100,7 @@ export default function page() {
               <input
                 className="w-[70%] mb-2 block p-1 text-sm text-gray-900 border border-gray-300 cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                 type="file"
-                name="productImage"
+                name="img2"
                 onChange={event => imageShow(event, setImgSrc2)}
               />
             </div>
